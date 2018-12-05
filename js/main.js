@@ -18,9 +18,6 @@ var xAxis = d3.axisBottom(x),
     yAxis = d3.axisLeft(y);
 
 
-
-
-
 svg.append("defs").append("clipPath")
     .attr("id", "clip")
     .append("rect")
@@ -86,7 +83,7 @@ function zoomed() {
     context.select(".brush").call(brush.move, x.range().map(t.invertX, t));
 }
 
- var form_val = "3 Yr";
+ var form_val = "10-2";
  var form = document.getElementById("dimensions1");
  var area = d3.area()
         .curve(d3.curveMonotoneX)
@@ -102,7 +99,7 @@ var area2 = d3.area()
 function createChart(form_val, data) {
 
     x.domain(d3.extent(data, function(d) { return d.Date; }));
-    y.domain([0, d3.max(data, function(d) { return d[form_val]; })]);
+    y.domain([d3.min(data, function(d) { return d[form_val]; }), d3.max(data, function(d) { return d[form_val]; })]);
     x2.domain(x.domain());
     y2.domain(y.domain());
 
@@ -164,8 +161,15 @@ function createChart(form_val, data) {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(zoom);
 
+    focus.selectAll("line").remove();
+    focus.append("line")
+        .attr('stroke', 'DarkSlateGray')
+        .attr('x1', x(data[0].Date))
+        .attr('x2', x(data[data.length-1].Date))
+        .attr('y1', y(0))
+        .attr('y2', y(0));
 
-
+        //console.log("data: " + x(data[7214].Date) + " total: " + data.length);
 
 }
 
@@ -182,7 +186,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         console.log(form_val);
         createChart(form_val, data);
     });
-    createChart("10 Yr", data);
+    createChart("10-2", data);
 
 });
 
@@ -200,6 +204,8 @@ function type(d) {
     d["20 Yr"] = parseFloat(d["20 Yr"]);
     d["30 Yr"] = parseFloat(d["30 Yr"]);
     d["SP500"] = parseFloat(d["SP500"]);
+    d["10-1"] = d["10 Yr"] - d["1 Yr"];
+    d["10-2"] = d["10 Yr"] - d["2 Yr"];
     d["Unemployment"] = parseFloat(d["Unemployment"]);
     return d;
 };
