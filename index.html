@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Yield Curve data</title>
+	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	 <style>
+
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+</style>
+</head>
+	<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+            	<h1 align="center">Yield Curve data over the years</h1>
+                <p>
+                    The following visualization is to try and zoom in and understand the different yield curve data
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 align="center" id="Selection">Select one yield curve data</h2>
+                <br>
+                <div id="buttons">
+                    <form id="dimensions1">
+                        <input type="radio"  id="3 Mo" name="mode">3 month rate</input>
+                        <input type="radio" id="3 Yr" name="mode" checked>3 year rate</input>
+                        <input type="radio" id="10 Yr" name="mode">10 year rate</input>
+                        <input type="radio" id="30 Yr" name="mode">30 year rate</input>
+                    </form>
+                 <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+           <svg id="Yield" width="960" height="500"></svg>
+        </div>
+        <h1 align="center">S&P 500 data over the years</h1>
+        <div class="row">
+           <svg id="S&P" width="960" height="500"></svg>
+        </div>
+    </div>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script src="./js/barChart.js"></script>
+    <script src="./js/scatterPlot.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
