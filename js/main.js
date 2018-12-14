@@ -1,7 +1,7 @@
 /* global d3, crossfilter, scatterPlot, barChart */
 var svg = d3.select("#Yield"),
-    margin = { top: 20, right: 20, bottom: (+svg.attr("height") + 20) / 2, left: 40 },
-    margin2 = { top: (+svg.attr("height") + 20) / 2, right: 20, bottom: 30, left: 40 },
+    margin = { top: 20, right: 20, bottom: (+svg.attr("height") + 20) / 2, left: 50 },
+    margin2 = { top: (+svg.attr("height") + 20) / 2, right: 20, bottom: 30, left: 50 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     height2 = +svg.attr("height") - margin2.top - margin2.bottom;
@@ -16,8 +16,7 @@ var parseMonthDayYear = d3.timeFormat("%b %_d %Y");
 var x = d3.scaleTime().range([0, width]),
     x2 = d3.scaleTime().range([0, width]),
     y = d3.scaleLinear().range([height, 0]),
-    y2 = d3.scaleLinear().range([height2, 0]),
-    tScale = d3.scaleUtc().range([0, 120]);
+    y2 = d3.scaleLinear().range([height2, 0]);
 
 var xAxis = d3.axisBottom(x),
     xAxis2 = d3.axisBottom(x2),
@@ -27,7 +26,7 @@ var xAxis = d3.axisBottom(x),
 var canvas = svg.append("g")
     .attr("class", canvas);
 
-var width_diff = 142.22320725370147;
+var width_diff = 156.098;
 
 
 
@@ -122,8 +121,6 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         }
         x2.domain(x.domain());
         y2.domain(y2.domain());
-        var fiveY = 5 * 365 * 10;
-        tScale.domain([0, fiveY]);
 
         d3.select("#x-axis")
             .remove();
@@ -174,23 +171,25 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
                 return (d.forEach(function(d1) { return d1[form_val] <= 0 ? "brick-red" : "blue"; }))
             })
             .on("mousemove", mousemove2)
-            .on("mouseout", function(d, i) {
-                hoverGroup.style("visibility", "hidden");
+            .on("mouseout", function() {
+                div.style("opacity", 0);
             })
-            .on("mouseover", function() {
-                hoverGroup.style("display", null);
+            .on("mouseover", function(d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
         //function() {hoverGroup.style("display", null)});
         // .on("mouseover", function() { focus.style("display", null); })
         //.on("mouseout", function() { focus.style("display", "none"); })
         //.on("mousemove", mousemove1);
 
-    
+
 
         function getString() {
-            if(form_val_1 == "GDP") {
+            if (form_val_1 == "GDP") {
                 return "GDP % change: ";
-            } else if(form_val_1 == "Unemployment") {
+            } else if (form_val_1 == "Unemployment") {
                 return "% Unemployment: ";
 
             } else {
@@ -206,11 +205,11 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
                 d1 = data[i],
                 day = x0 - d0.Date > d1.Date - x0 ? d1 : d0;
             //console.log("value of d in mousemove ", day, "value of i ", i, "Value of mousemove ", +d3.mouse(that)[0]);
-            div .html(parseMonthDayYear(day.Date) + "<br/>"  + "Spread: " + (day[form_val]).toFixed(3) 
-                     + " basis pts" + "<br/>" + getString() + (day[form_val_1].toFixed(3)) + "<br/>" + "% SP500_chg: " + (day["SP500_chg"].toFixed(3)) )  
-                .style("left", (d3.event.pageX) + "px")     
+            div.html(parseMonthDayYear(day.Date) + "<br/>" + "Spread: " + (day[form_val]).toFixed(3) +
+                    " basis pts" + "<br/>" + getString() + (day[form_val_1].toFixed(3)) + "<br/>" + "% SP500_chg: " + (day["SP500_chg"].toFixed(3)))
+                .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px")
-                .style("opacity", .99);  
+                .style("opacity", .99);
         }
 
         focus.append("g")
@@ -241,8 +240,10 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
             .on("mouseout", function() {
                 div.style("opacity", 0);
             })
-            .on("mouseover", function() {
-                hoverGroup1.style("display", null);
+            .on("mouseover", function(d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
             });
 
         context.append("g")
@@ -263,64 +264,11 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
                 .attr("y2", y2(0));
         }
 
-        var hoverGroup = svg.append("g").style("visibility", "hidden");
-        var hoverGroup1 = context.append("g").style("visibility", "hidden");
 
-        var div = d3.select("body").append("div")   
-            .attr("class", "tooltip")               
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
             .style("opacity", 0);
 
-
-        hoverGroup.append("rect")
-            .attr("x", 10)
-            .attr("y", 0)
-            .attr("rx", 4)
-            .attr("ry", 4)
-            .attr("width", 165)
-            .attr("height", 65)
-            .attr("fill", "rgb(100,100,100)")
-            .attr("stroke", "black");
-
-        var hoverTextBps = hoverGroup.append("text")
-            .attr("x", 14)
-            .attr("y", 15)
-            .style("fill", "white");
-
-        var hoverTextDate = hoverGroup.append("text")
-            .attr("x", 14)
-            .attr("y", 35)
-            .style("fill", "white");
-
-        var hoverTextGDP = hoverGroup.append("text")
-            .attr("x", 14)
-            .attr("y", 55)
-            .style("fill", "white");
-
-
-        hoverGroup1.append("rect")
-            .attr("x", 10)
-            .attr("y", 70)
-            .attr("rx", 4)
-            .attr("ry", 4)
-            .attr("width", 165)
-            .attr("height", 65)
-            .attr("fill", "rgb(100,100,100)")
-            .attr("stroke", "black");
-
-        var hoverTextBps1 = hoverGroup1.append("text")
-            .attr("x", 14)
-            .attr("y", 85)
-            .style("fill", "white");
-
-        var hoverTextDate1 = hoverGroup1.append("text")
-            .attr("x", 14)
-            .attr("y", 105)
-            .style("fill", "white");
-
-        var hoverTextGDP1 = hoverGroup1.append("text")
-            .attr("x", 14)
-            .attr("y", 125)
-            .style("fill", "white");
 
         context.append("g")
             .attr("class", "axis axis--y")
@@ -340,7 +288,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         focus.append("text")
             .attr("id", "fylabel")
             .attr("transform", "rotate(-90)")
-            .attr("y", -margin.left + 2)
+            .attr("y", -margin.left + 4)
             .attr("x", height - 1.2 * margin.bottom)
             .attr("dy", ".6em")
             .style("text-anchor", "middle")
@@ -466,7 +414,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         width_diff = x(endDate) - x(startDate);
 
         if (x_tmp + width_diff >= width) {
-            x_tmp = width - width_diff + margin.right;
+            x_tmp = width - width_diff + margin.right + 10;
         }
 
         drawHandle(x_tmp, width_diff);
@@ -523,8 +471,8 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
             }
             //console.log(i);
         });
-             d3.selectAll("#xLabel1").remove();
-            d3.selectAll("#yLabel1").remove();
+        d3.selectAll("#xLabel1").remove();
+        d3.selectAll("#yLabel1").remove();
 
         var unEmpvsInt = scatterPlot()
             .margin({ top: 20, right: 20, bottom: 70, left: 40 })
@@ -541,9 +489,9 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
             .yLabel(printAxis_context())
             .xLabel(printAxis_focus());
 
-         
+
         var sp500vsInt = scatterPlot()
-         .margin({ top: 20, right: 20, bottom: 70, left: 40 })
+            .margin({ top: 20, right: 20, bottom: 70, left: 40 })
             .xS(xScale1)
             .yS(yScale2)
             .y(function(d) {
@@ -561,7 +509,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
             .datum(data1)
             .call(sp500vsInt);
 
-            var chart1 = d3.select("#chart1")
+        var chart1 = d3.select("#chart1")
             .datum(data1)
             .call(unEmpvsInt);
         yScale2 = [d3.min(data1, function(d) { return 1.02 * d.offsetD["SP500_chg"]; }), d3.max(data, function(d) { return 1.02 * d.offsetD["SP500_chg"]; })];
@@ -633,7 +581,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         }
 
         var yScale2 = [d3.min(data, function(d) { return 1.02 * d["SP500_chg"]; }), d3.max(data, function(d) { return 1.02 * d["SP500_chg"]; })];
-        
+
         var filteredData = data.filter(function(d) {
             return d.Date >= x.invert(x00) && d.Date <= x.invert(x01);
         });
@@ -675,6 +623,7 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
 });
 
 var previous_SP500 = 359;
+
 function type(d) {
     d.Date = parseDate(d.Date);
     d["1 Mo"] = parseFloat(d["1 Mo"]);
@@ -689,7 +638,7 @@ function type(d) {
     d["20 Yr"] = parseFloat(d["20 Yr"]);
     d["30 Yr"] = parseFloat(d["30 Yr"]);
     d["SP500"] = parseFloat(d["SP500"]);
-    d["SP500_chg"] = (d["SP500"]/previous_SP500 - 1)*100;
+    d["SP500_chg"] = (d["SP500"] / previous_SP500 - 1) * 100;
     previous_SP500 = d["SP500"];
     d["10-1"] = d["10 Yr"] - d["1 Yr"];
     d["10-2"] = d["10 Yr"] - d["2 Yr"];

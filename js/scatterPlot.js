@@ -2,8 +2,8 @@
 
 function scatterPlot() {
     var margin = { top: 20, right: 20, bottom: 70, left: 40 },
-        width = 400,
-        height = 400,
+        width = 300,
+        height = 300,
         innerWidth = width - margin.left - margin.right,
         innerHeight = height - margin.top - margin.bottom,
         xValue = function(d) { return d[0]; },
@@ -87,9 +87,9 @@ function scatterPlot() {
                 .attr("id", "xLabel1")
                     .attr("transform",
                     "translate(" + (innerWidth / 2) + " ," +
-                    (height - 40) + ")")
+                    (height - 60) + ")")
                 .style("text-anchor", "middle")
-                .style("font-size", "15px")
+                .style("font-size", "12px")
                 .text(xLabel);
 
             var points = g.selectAll(".point")

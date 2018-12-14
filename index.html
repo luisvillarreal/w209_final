@@ -11,7 +11,6 @@
   stroke: steelblue;
   stroke-width: 1.5px;
 }
-
 .zoom {
   cursor: move;
   fill: none;
@@ -109,74 +108,82 @@ div.tooltip {
                     The following visualization allows the user to compare the spreads of the yield curve (top chart) and see the effects on the different indicators : GDP, S&P500 and Unemployment in the (bottom chart) a few months later. We invite the viewer to spot whenever the spreads go negative and see how many months it takes to reflect on the GDP (and other indicators) by adjusting the width of the red handlebars.
                     The visualization also captures the points within the red handlebar and presents two scatterplot, one representing the daily S&P500 change vs the yield spread and the other with the GDP vs yield spread. In case the user would like to use the unemployment, S&P500 data instead of the GDP data, the user can do so by choosing the appropriate radio button.</p>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h6 id="Selection">Select One Spread</h6>
-                    <div id="buttons">
-                        <form id="dimensions1">
-                            <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
+        </div>
+        <div class="row" style="margin: 0; padding: 0;">
+            <div class="col-12">
+                <h6 id="Selection">Select One Spread</h6>
+                <div id="buttons">
+                    <form id="dimensions1">
+                        <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
                         <input type="radio" id="3 Yr" name="mode" checked>3 year rate</input-->
-                            <input type="radio" id="10-1" name="mode" checked>10 year-1 year yield spread</input>
-                            <input type="radio" id="10-2" name="mode">10 year-2 year yield spread</input>
-                        </form>
-                        <br>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div>
-                        <div>
-                            Move the bar to select the years
-                        </div>
-                        Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
-                        <label id="date" for="rangeH">Oct 31 2018</label>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div>
-                        Width of the graph
-                    </div>
-                    <div>
-                        O Months<input id="rangeH" type="range" min="10" max="920" value="60">
-                        <label id="numOfYears" for="rangeH">60</label> Months
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <svg id="new" width="960" height="405">
-                        <svg id="Yield" width="960" height="400"></svg>
-                    </svg>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                <form id="dimensions2">
-                    <input type="radio" id="GDP" name="mode" checked>GDP</input>
-                    <input type="radio" id="Unemployment" name="mode">Unemployment</input>
-                    <input type="radio" id="SP500" name="mode">S&P500</input>
-                </form>
-            </br>
-            </div>
-            <div class="row">
-                <div class="col-1">
-                </div>
-                <div class="col-5">
-                    <h10 align="center" id="Scatter"><label id="Dim2"></label> vs Spread</h10>
-                    <div id="chart1"></div>
-                </div>
-                <div class="col-1"> </div>
-                <div class="col-5">
-                    <h10 align="center" id="Scatter">S&P 500 daily % chg vs Spread</h10>
-                    <div id="chart2"></div>
+                        <input type="radio" id="10-1" name="mode" checked>&nbsp;10 year-1 year yield spread</input>
+                        <br style="height:4px; visibility:hidden;" />
+                        <input type="radio" id="10-2" name="mode">&nbsp;10 year-2 year yield spread</input>
+                    </form>
                 </div>
             </div>
         </div>
-        <script src="http://d3js.org/d3.v4.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-        <script src="./js/barChart.js"></script>
-        <script src="./js/scatterPlot.js"></script>
-        <script src="./js/main.js"></script>
+          <hr style="margin: 0; height:5px; visibility:hidden;" />
+        <div class="row" style="margin: 0; padding: 0;">
+            <div class="col-6">
+                 <h8>Move the bar to select the years</h8>
+                <div>
+                    Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
+                    <label id="date" for="rangeH">Oct 31 2018</label>
+                </div>
+            </div>
+            <div class="col-6">
+                <h8>Width of the red handles</h8>
+                <div>
+                    0 Months<input id="rangeH" type="range" min="10" max="920" value="60">
+                    <label id="numOfYears" for="rangeH">60</label> Months
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <svg id="new" width="960" height="405">
+                    <svg id="Yield" width="960" height="400"></svg>
+                </svg>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form id="dimensions2">
+                    <input type="radio" id="GDP" name="mode" checked>&nbsp;GDP</input>
+                    <input type="radio" id="Unemployment" name="mode">&nbsp;Unemployment</input>
+                    <input type="radio" id="SP500" name="mode">&nbsp;S&P500</input>
+                </form>
+            </div>
+        </div>
+          <hr style="margin: 0; height:5px; visibility:hidden;" />
+        <div class="row">
+        
+            <div class="col-6">
+                <div align="center" id="Scatter"><h8><label id="Dim2"></label> vs Spread</h8></div>
+                <div id="chart1"></div>
+            </div>
+        
+            <div class="col-6">
+                <div align="center" id="Scatter"><h8>S&P 500 daily % chg vs Spread</h8></div>
+                <div id="chart2"></div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="bottomnav" align="center">
+        <font color="white">
+            <br>
+            Data from U.S. Treasury and Labor Department of Statistics
+            <br>---------------
+        </font>
+    </div>
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script src="./js/barChart.js"></script>
+    <script src="./js/scatterPlot.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
