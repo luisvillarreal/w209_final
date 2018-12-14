@@ -29,33 +29,62 @@ div.tooltip {
     border-radius: 8px;         
     pointer-events: none;           
 }
-
+.topnav, .bottomnav{
+  background-color: #008080;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
 </style>
 </head>
 
 <body>
+    <div class="topnav">
+        <font color="white">
+            <h1 align="center">Yield Curve as a Barometer for the Economy</h1>
+            <h4 align = "center">Jayanth Srinivasa - Luis Villarreal</h4>
+            <h5 align = "center">December 13th, 2018 - Data Visualization W209.3</h5>
+        </font>
+    </div><br><br>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 align="center">Spread data over the years</h1>
                 <p>
-                    The following visualization is to try and zoom in and understand the different yield curve data
+                    The Yield Curve has become a popular topic entering the second
+                    half of 2018, as the Fed has been more proactive in raising
+                    short-term rates. Starting this month, the flattening of the
+                    Yield Curve has produced its first inversions for the first time
+                    in a decade. The purpose of this project is to provide the user
+                    rich-data insights through visualizations and let her understand
+                    why the state of the Yield Curve has many economists spinning
+                    their heads. While we recognize there is no accurate way to predict
+                    large swings in the Markets, we believe this would provide a
+                    better idea of what to expect when the Curve becomes flat or
+                    inverted, and weather the storm. For the last six decades, whenever
+                    the Curve is inverted, a few months later the Markets have
+                    experienced high volatility and recessions in most times. We
+                    invite the user, first, to go through different dates and
+                    observe how the Curve changes in time. Second, change to the
+                    tab "SP500 vs YC" on the top left corner of the chart and
+                    hover along the datapoints in the S&P 500 and see how the Yield
+                    Curve behaves, especially before the big crashes in 2001 and
+                    2008.
                 </p>
             </div>
         </div>
-        <div class='tableauPlaceholder' id='viz1544744645428' style='position: relative'>
+        <div class='tableauPlaceholder' id='viz1544757999553' style='position: relative'>
             <noscript>
-                <a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurveasBarometerfortheEconomy&#47;1_rss.png' style='border: none' />
+                <a href='#'>
+          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurve&#47;1_rss.png' style='border: none' />
         </a>
             </noscript>
             <object class='tableauViz' style='display:none;'>
                 <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
                 <param name='embed_code_version' value='3' />
                 <param name='site_root' value='' />
-                <param name='name' value='YieldCurveData_0&#47;YieldCurveasBarometerfortheEconomy' />
-                <param name='tabs' value='no' />
+                <param name='name' value='YieldCurveData_0&#47;YieldCurve' />
+                <param name='tabs' value='yes' />
                 <param name='toolbar' value='no' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurveasBarometerfortheEconomy&#47;1.png' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurve&#47;1.png' />
                 <param name='animate_transition' value='yes' />
                 <param name='display_static_image' value='yes' />
                 <param name='display_spinner' value='yes' />
@@ -65,79 +94,89 @@ div.tooltip {
             </object>
         </div>
         <script type='text/javascript'>
-        var divElement = document.getElementById('viz1544744645428');
+        var divElement = document.getElementById('viz1544757999553');
         var vizElement = divElement.getElementsByTagName('object')[0];
-        vizElement.style.width = '1016px';
-        vizElement.style.height = '991px';
+        vizElement.style.width = '100%';
+        vizElement.style.height = (divElement.offsetWidth * 0.8) + 'px';
         var scriptElement = document.createElement('script');
-        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
         </script>
         <br><br><br>
         <div class="row">
-            <div class="col-12">
-                <h6 id="Selection">Select One Spread</h6>
-                <div id="buttons">
-                    <form id="dimensions1">
-                        <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
+            <div class="break-middle">
+                <p>
+                    The following visualization allows the user to compare the spreads of the yield curve (top chart) and see the effects on the different indicators : GDP, S&P500 and Unemployment in the (bottom chart) a few months later. We invite the viewer to spot whenever the spreads go negative and see how many months it takes to reflect on the GDP (and other indicators) by adjusting the width of the red handlebars.
+                    The visualization also captures the points within the red handlebar and presents two scatterplot, one representing the daily S&P500 change vs the yield spread and the other with the GDP vs yield spread. In case the user would like to use the unemployment, S&P500 data instead of the GDP data, the user can do so by choosing the appropriate radio button.</p>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h6 id="Selection">Select One Spread</h6>
+                    <div id="buttons">
+                        <form id="dimensions1">
+                            <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
                         <input type="radio" id="3 Yr" name="mode" checked>3 year rate</input-->
-                        <input type="radio" id="10-1" name="mode" checked>10 year-1 year yield spread</input>
-                        <input type="radio" id="10-2" name="mode">10 year-2 year yield spread</input>
-                    </form>
-                    <br>
-                </div>
-            </div>
-            <div class="col-6">
-                <div>
-                    <div>
-                        Move the bar to select the years
+                            <input type="radio" id="10-1" name="mode" checked>10 year-1 year yield spread</input>
+                            <input type="radio" id="10-2" name="mode">10 year-2 year yield spread</input>
+                        </form>
+                        <br>
                     </div>
-                    Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
-                    <label id="date" for="rangeH">Oct 31 2018</label>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <div>
+                            Move the bar to select the years
+                        </div>
+                        Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
+                        <label id="date" for="rangeH">Oct 31 2018</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        Width of the graph
+                    </div>
+                    <div>
+                        O Months<input id="rangeH" type="range" min="10" max="920" value="60">
+                        <label id="numOfYears" for="rangeH">60</label> Months
+                    </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div>
-                    Width of the graph
-                </div>
-                <div>
-                    O Months<input id="rangeH" type="range" min="10" max="920" value="60">
-                    <label id="numOfYears" for="rangeH">60</label> Months
+            <div class="row">
+                <div class="col-12">
+                    <svg id="new" width="960" height="405">
+                        <svg id="Yield" width="960" height="400"></svg>
+                    </svg>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <svg id="new" width="960" height="505">
-                    <svg id="Yield" width="960" height="500"></svg>
-                </svg>
+            <div class="row">
+                <div class="col-12">
+                <form id="dimensions2">
+                    <input type="radio" id="GDP" name="mode" checked>GDP</input>
+                    <input type="radio" id="Unemployment" name="mode">Unemployment</input>
+                    <input type="radio" id="SP500" name="mode">S&P500</input>
+                </form>
+            </br>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                </div>
+                <div class="col-5">
+                    <h10 align="center" id="Scatter"><label id="Dim2"></label> vs Spread</h10>
+                    <div id="chart1"></div>
+                </div>
+                <div class="col-1"> </div>
+                <div class="col-5">
+                    <h10 align="center" id="Scatter">S&P 500 daily % chg vs Spread</h10>
+                    <div id="chart2"></div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <form id="dimensions2">
-                <input type="radio" id="GDP" name="mode" checked>GDP</input>
-                <input type="radio" id="Unemployment" name="mode">Unemployment</input>
-                <input type="radio" id="SP500" name="mode">S&P500</input>
-            </form>
-        </div>
-        </br>
-        <div class="row">
-            <div class="col-6">
-                 <h6 align="center" id="Scatter"><label id="Dim2"></label> vs Yield Spread</h6>
-                <div id="chart1"></div>        
-            </div>
-            <div class="col-6">
-               <h6 align="center" id="Scatter">S&P 500 daily percent change vs Yield Spread</h6>
-                <div id="chart2"></div>
-            </div>
-        </div>
-    </div>
-    <script src="http://d3js.org/d3.v4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-    <script src="./js/barChart.js"></script>
-    <script src="./js/scatterPlot.js"></script>
-    <script src="./js/main.js"></script>
+        <script src="http://d3js.org/d3.v4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+        <script src="./js/barChart.js"></script>
+        <script src="./js/scatterPlot.js"></script>
+        <script src="./js/main.js"></script>
 </body>
 
 </html>
