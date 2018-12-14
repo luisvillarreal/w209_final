@@ -123,27 +123,27 @@ div.tooltip {
                 </div>
             </div>
         </div>
-          <hr style="margin: 0; height:5px; visibility:hidden;" />
+        <hr style="margin: 0; height:5px; visibility:hidden;" />
         <div class="row" style="margin: 0; padding: 0;">
             <div class="col-6">
-                 <h8>Move the bar to select the years</h8>
+                <div><h6>Move the bar to select the years</h6></div>
                 <div>
                     Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
                     <label id="date" for="rangeH">Oct 31 2018</label>
                 </div>
             </div>
             <div class="col-6">
-                <h8>Width of the red handles</h8>
+                <div><h6>Width of the red handles</h6></div>
                 <div>
-                    0 Months<input id="rangeH" type="range" min="10" max="920" value="60">
+                    0 Months<input id="rangeH" type="range" min="10" max="920" value="10">
                     <label id="numOfYears" for="rangeH">60</label> Months
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <svg id="new" width="960" height="405">
-                    <svg id="Yield" width="960" height="400"></svg>
+                <svg id="new" width="960" height="335">
+                    <svg id="Yield" width="960" height="330"></svg>
                 </svg>
             </div>
         </div>
@@ -156,16 +156,18 @@ div.tooltip {
                 </form>
             </div>
         </div>
-          <hr style="margin: 0; height:5px; visibility:hidden;" />
+        <hr style="margin: 0; height:5px; visibility:hidden;" />
         <div class="row">
-        
             <div class="col-6">
-                <div align="center" id="Scatter"><h8><label id="Dim2"></label> vs Spread</h8></div>
+                <div align="center" id="Scatter">
+                    <h8><label id="Dim2"></label> vs Spread</h8>
+                </div>
                 <div id="chart1"></div>
             </div>
-        
             <div class="col-6">
-                <div align="center" id="Scatter"><h8>S&P 500 daily % chg vs Spread</h8></div>
+                <div align="center" id="Scatter">
+                    <h8>S&P 500 daily % chg vs Spread</h8>
+                </div>
                 <div id="chart2"></div>
             </div>
         </div>
