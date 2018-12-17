@@ -5,11 +5,19 @@
     <meta charset="UTF-8">
     <title>Yield Curve data</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.css" rel="stylesheet">
     <style>
         .area {
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
+}
+.link-color{
+    color: #57B99D;
 }
 .zoom {
   cursor: move;
@@ -37,16 +45,32 @@ div.tooltip {
 </head>
 
 <body>
-    <div class="topnav">
-        <font color="white">
-            <h1 align="center">Yield Curve as a Barometer for the Economy</h1>
-            <h4 align = "center">Jayanth Srinivasa - Luis Villarreal</h4>
-            <h5 align = "center">December 13th, 2018 - Data Visualization W209.3</h5>
-        </font>
-    </div><br><br>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
+    <nav class="navbar navbar-expand-lg bg-secondary hidden-top topnav" id="mainNav">
+        <span> <a class="navbar-brand navbar-small" href="#page-top" style="font-size: 1.1em"> W209-Yield Curve As a Barometer of the Economy</span></a> </span>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <!--li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#intro">Introduction</a>
+                </li-->
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#definitions">Glossary</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#SP500">S&P500vsDailyYieldCurve</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#trends">Trends</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="masthead" id="page-top">
+        <div class="container">
+            <div class="row">
+                <h5>Introduction: </h5>
                 <p>
                     The Yield Curve has become a popular topic entering the second
                     half of 2018, as the Fed has been more proactive in raising
@@ -55,134 +79,188 @@ div.tooltip {
                     in a decade. The purpose of this project is to provide the user
                     rich-data insights through visualizations and let her understand
                     why the state of the Yield Curve has many economists spinning
-                    their heads. While we recognize there is no accurate way to predict
+                    their heads.While we recognize there is no accurate way to predict
                     large swings in the Markets, we believe this would provide a
                     better idea of what to expect when the Curve becomes flat or
-                    inverted, and weather the storm. For the last six decades, whenever
+                    inverted, and weather the storm.
+                </p>
+                <p>
+                    For the last six decades, whenever
                     the Curve is inverted, a few months later the Markets have
-                    experienced high volatility and recessions in most times. We
-                    invite the user, first, to go through different dates and
-                    observe how the Curve changes in time. Second, change to the
-                    tab "SP500 vs YC" on the top left corner of the chart and
-                    hover along the datapoints in the S&P 500 and see how the Yield
-                    Curve behaves, especially before the big crashes in 2001 and
-                    2008.
+                    experienced high volatility and recessions in most times. The Yield curve is thus a leading
+                    indicator of the economy and a good Barometer for it.
+                    We invite the user, first, to go through the different definitions
+                    and then study the visualizations for different dates and
+                    observe how the Curve changes in time. For experienced financial professionals,
+                    please jump into the Visualization section directly !
+                </p>
+                <a href="#SP500" class="js-scroll-trigger" >
+                    Skip terms-start exploring!
+                </a>
+            </div>
+        </div>
+    </header>
+    <section id="definitions">
+        <div class="container">
+            <div class="row">
+                <h5 align="left">Terms used in the Visualization: </h5>
+                <p>
+                    This section is to only give a basic understanding to better utilize the visualizations. For a formal definition of these terms, please visit wikipedia. In all our visualizations, we refer to the U.S economy.
+                </p>
+                <p id="YieldCurve">
+                    <b><u>Yield Curve</u></b> : Is a curve showing several interest rates(or yields) across different contract lengths(3 months, 1 year, 30 years,..) for a similar debt contract. More specifically,the U.S. dollar interest rates paid on U.S. Treasury securities for various maturities are commonly plotted on a graph such as <a href="#viz1545010802409" class="js-scroll-trigger">the one below</a> and is informally called "the yield curve". More formal mathematical descriptions of this relation are often called the term structure of interest rates.
+                    The U.S Federal Reserve announces these rates on a daily basis.
+                </p>
+                <p id="Spread">
+                    <b><u>Spread of the Yield Curve</u></b>: The difference between the long-term and short-term interest rates on a given day is usually termed as the Spread of the Yield Curve. There are various spreads, but Economists and Stock-marketers generally follow the 10-1 and 10-2 spreads (the difference between the 10 year and 1 year interest rates and 10 year and 2 year interest rates).
+                </p>
+                <p id="S500">
+                    <b><u>S&P500</u></b>: The Standard & Poor's 500 often abbreviated to S&P500 is an index based on the market capitalization of the 500 largest companies. The S&P500 is generally a good indicator of the stock market sentiment and is often used in Financial/Economic discussions.
+                </p>
+                <p id="GDP">
+                    <b><u>GDP</u></b>:The GDP or the Gross Domestic Product is a monetary measure of the market value of all the final goods and services in a period of time, often annually or quarterly.
+                </p>
+                <p id="Unemp">
+                    <b><u>Unemployment Rate</u></b>: The United States Census Bureau (within the United States Department of Commerce) and/or the Bureau of Labor Statistics (within the United States Department of Labor) gather and publish employment statistics monthly and this is a good indicator of the health of the Economy from the perspective of the 'Main Street' or common man.
                 </p>
             </div>
         </div>
-        <div class='tableauPlaceholder' id='viz1544757999553' style='position: relative'>
-            <noscript>
-                <a href='#'>
-          <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurve&#47;1_rss.png' style='border: none' />
-        </a>
-            </noscript>
-            <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='embed_code_version' value='3' />
-                <param name='site_root' value='' />
-                <param name='name' value='YieldCurveData_0&#47;YieldCurve' />
-                <param name='tabs' value='yes' />
-                <param name='toolbar' value='no' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Yi&#47;YieldCurveData_0&#47;YieldCurve&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='filter' value='publish=yes' />
-            </object>
-        </div>
-        <script type='text/javascript'>
-        var divElement = document.getElementById('viz1544757999553');
-        var vizElement = divElement.getElementsByTagName('object')[0];
-        vizElement.style.width = '100%';
-        vizElement.style.height = (divElement.offsetWidth * 0.8) + 'px';
-        var scriptElement = document.createElement('script');
-        scriptElement.src = "https://public.tableau.com/javascripts/api/viz_v1.js";
-        vizElement.parentNode.insertBefore(scriptElement, vizElement);
-        </script>
-        <br><br><br>
-        <div class="row">
-            <div class="break-middle">
+    </section>
+    <section id="SP500">
+        <div class="container">
+            <div class='row'>
+                <h5 align="left">Yield Curve and S&P500: </h5>
                 <p>
-                    The following visualization allows the user to compare the spreads of the yield curve (top chart) and see the effects on the different indicators : GDP, S&P500 and Unemployment in the (bottom chart) a few months later. We invite the viewer to spot whenever the spreads go negative and see how many months it takes to reflect on the GDP (and other indicators) by adjusting the width of the red handlebars.
-                    The visualization also captures the points within the red handlebar and presents two scatterplot, one representing the daily S&P500 change vs the yield spread and the other with the GDP vs yield spread. In case the user would like to use the unemployment, S&P500 data instead of the GDP data, the user can do so by choosing the appropriate radio button.</p>
+                    The following visualization, gives an introduction about <a href="#YieldCurve" class="js-scroll-trigger">Yield Curve</a> and <a href="#S500" class="js-scroll-trigger">the S&P 500</a>.
+                    We invite the user, first, to go through different dates and observe how the Curve changes in time. Second, change to the tab "SP500 vs YC" on the top left corner of the chart and hover along the datapoints in the S&P 500 and see how the Yield Curve behaves, especially before the big crashes in 2001 and 2008.
+                </p>
+            </div>
+            <div class='row'>
+                <div class='tableauPlaceholder' id='viz1545022268290' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sp&#47;sp500_yc_weekly&#47;SPYCDashboard&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                        <param name='embed_code_version' value='3' />
+                        <param name='site_root' value='' />
+                        <param name='name' value='sp500_yc_weekly&#47;SPYCDashboard' />
+                        <param name='tabs' value='yes' />
+                        <param name='toolbar' value='no' />
+                        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;sp&#47;sp500_yc_weekly&#47;SPYCDashboard&#47;1.png' />
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='filter' value='publish=yes' /></object></div>
+                <script type='text/javascript'>
+                var divElement = document.getElementById('viz1545022268290');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                vizElement.style.width = '1000px';
+                vizElement.style.height = '823px';
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
             </div>
         </div>
-        <div class="row" style="margin: 0; padding: 0;">
-            <div class="col-12">
-                <h6 id="Selection">Select One Spread</h6>
-                <div id="buttons">
-                    <form id="dimensions1">
-                        <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
+    </section>
+    <section id="trends">
+        <div class="container">
+            <div class="row">
+                <div class="break-middle">
+                    <h5 align="left">Yield Curve as a Leading Indicator: </h5>
+                    <p>
+                        The following visualization allows the user to compare the spreads of the yield curve (top chart) and see the effects on the different indicators : GDP, S&P500 and Unemployment in the (bottom chart) a few months later. We invite the viewer to spot whenever the spreads go negative and see how many months it takes to reflect on the GDP (and other indicators) by adjusting the width of the red handlebars.
+                        The visualization also captures the points within the red handlebar and presents two scatterplot, one representing the daily S&P500 change vs the yield spread and the other with the GDP vs yield spread. In case the user would like to use the unemployment, S&P500 data instead of the GDP data, the user can do so by choosing the appropriate radio button.</p>
+                </div>
+            </div>
+            <div class="row" style="margin: 0; padding: 0;">
+                <div class="col-12">
+                    <h6 id="Selection">Select One Spread</h6>
+                    <div id="buttons">
+                        <form id="dimensions1">
+                            <!--input type="radio" id="3 Mo" name="mode">3 month rate</input>
                         <input type="radio" id="3 Yr" name="mode" checked>3 year rate</input-->
-                        <input type="radio" id="10-1" name="mode" checked>&nbsp;10 year-1 year yield spread</input>
-                        <br style="height:4px; visibility:hidden;" />
-                        <input type="radio" id="10-2" name="mode">&nbsp;10 year-2 year yield spread</input>
+                            <input type="radio" id="10-1" name="mode" checked>&nbsp;10 year-1 year yield spread</input>
+                            <br style="height:4px; visibility:hidden;" />
+                            <input type="radio" id="10-2" name="mode">&nbsp;10 year-2 year yield spread</input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <hr style="margin: 0; height:5px; visibility:hidden;" />
+            <div class="row" style="margin: 0; padding: 0;">
+                <div class="col-6">
+                    <div><h6>Move the bar to select the years</h6>
+                    </div>
+                    <div>
+                        Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
+                        <label id="date" for="rangeH">Oct 31 2018</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div><h6>Width of the red handles</h6>
+                    </div>
+                    <div>
+                        0 Months<input id="rangeH" type="range" min="10" max="920" value="60">
+                        <label id="numOfYears" for="rangeH">60</label> Months
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <svg id="new" width="960" height="335">
+                        <svg id="Yield" width="960" height="330"></svg>
+                    </svg>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <form id="dimensions2">
+                        <input type="radio" id="GDP" name="mode" checked>&nbsp;GDP</input>
+                        <input type="radio" id="Unemployment" name="mode">&nbsp;Unemployment</input>
+                        <input type="radio" id="SP500" name="mode">&nbsp;S&P500</input>
                     </form>
                 </div>
             </div>
-        </div>
-        <hr style="margin: 0; height:5px; visibility:hidden;" />
-        <div class="row" style="margin: 0; padding: 0;">
-            <div class="col-6">
-                <div><h6>Move the bar to select the years</h6></div>
-                <div>
-                    Jan 2 1990<input id="rangeHandle" type="range" min="10" max="920" value="0">
-                    <label id="date" for="rangeH">Oct 31 2018</label>
+            <hr style="margin: 0; height:5px; visibility:hidden;" />
+            <div class="row">
+                <div class="col-6">
+                    <div align="center" id="Scatter">
+                        <h8><label id="Dim2"></label> vs Spread</h8>
+                    </div>
+                    <div id="chart1"></div>
+                </div>
+                <div class="col-6">
+                    <div align="center" id="Scatter">
+                        <h8>S&P 500 daily % chg vs Spread</h8>
+                    </div>
+                    <div id="chart2"></div>
                 </div>
             </div>
-            <div class="col-6">
-                <div><h6>Width of the red handles</h6></div>
-                <div>
-                    0 Months<input id="rangeH" type="range" min="10" max="920" value="10">
-                    <label id="numOfYears" for="rangeH">60</label> Months
-                </div>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <svg id="new" width="960" height="335">
-                    <svg id="Yield" width="960" height="330"></svg>
-                </svg>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <form id="dimensions2">
-                    <input type="radio" id="GDP" name="mode" checked>&nbsp;GDP</input>
-                    <input type="radio" id="Unemployment" name="mode">&nbsp;Unemployment</input>
-                    <input type="radio" id="SP500" name="mode">&nbsp;S&P500</input>
-                </form>
-            </div>
-        </div>
-        <hr style="margin: 0; height:5px; visibility:hidden;" />
-        <div class="row">
-            <div class="col-6">
-                <div align="center" id="Scatter">
-                    <h8><label id="Dim2"></label> vs Spread</h8>
-                </div>
-                <div id="chart1"></div>
-            </div>
-            <div class="col-6">
-                <div align="center" id="Scatter">
-                    <h8>S&P 500 daily % chg vs Spread</h8>
-                </div>
-                <div id="chart2"></div>
-            </div>
-        </div>
+    </section>
     </div>
-    <br><br>
-    <div class="bottomnav" align="center">
-        <font color="white">
-            <br>
-            Data from U.S. Treasury and Labor Department of Statistics
-            <br>---------------
-        </font>
-    </div>
+    <section class="portfolio">
+        <div class="bottomnav" align="center" id="about">
+            <font color="white">
+                <br>
+                Visualization created by Luis Villareal and Jayanth Srinivasa
+                <br>
+                Data from U.S. Treasury and Labor Department of Statistics
+                <br>
+                Thanks to John Guerra for all the support and guidance!
+                <br>---------------
+            </font>
+        </div>
+    </section>
     <script src="http://d3js.org/d3.v4.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-scale-chromatic@1.3.3/dist/d3-scale-chromatic.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script src="./js/freelancer.js"></script>
     <script src="./js/barChart.js"></script>
     <script src="./js/scatterPlot.js"></script>
     <script src="./js/main.js"></script>

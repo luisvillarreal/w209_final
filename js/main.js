@@ -1,4 +1,9 @@
 /* global d3, crossfilter, scatterPlot, barChart */
+var functionforscroll = function(id){
+    var reqId = "#"+id;
+    window.scrollTo(0, $(reqId).offset().top-85);
+}
+
 var svg = d3.select("#Yield"),
     margin = { top: 20, right: 20, bottom: (+svg.attr("height") + 20) / 2, left: 50 },
     margin2 = { top: (+svg.attr("height") + 20) / 2, right: 20, bottom: 30, left: 50 },
@@ -160,16 +165,32 @@ d3.csv("data/yield_data_with_s&p.csv", type, function(error, data) {
         .attr("offset", function(d) { return d.offset; })
         .attr("stop-color", function(d) { return d.color; });
         */
+        focus.append("linearGradient")
+            .attr("id", "line-gradient")
+            .attr("gradientUnits", "userSpaceOnUse")
+            .attr("x1", 0).attr("y1",  y(0))
+            .attr("x2", 0).attr("y2", y(4))
+            .selectAll("stop")
+            .data(
+                [
+                    { offset: "100%", color: "blue" },
+                    { offset: "100%", color: "red" },
+                ]
+            )
+            .enter().append("stop")
+            .attr("offset", function(d) { return d.offset; })
+            .attr("stop-color", function(d) { return d.color; });
+
 
         focus.append("path")
             .datum(data)
             .attr("id", "area")
             .attr("class", "area")
             .attr("d", area)
-            .attr("stroke", function(d) {
+         /*   .style("stroke", function(d) {
                 // console.log("data in line path ", d);
                 return (d.forEach(function(d1) { return d1[form_val] <= 0 ? "brick-red" : "blue"; }))
-            })
+            })*/
             .on("mousemove", mousemove2)
             .on("mouseout", function() {
                 div.style("opacity", 0);
