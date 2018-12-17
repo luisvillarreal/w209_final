@@ -18,7 +18,7 @@ Also, provide the user with insights of Yield Spreads and other economic data su
 
 ## Data Sources: ##
 U.S. Treasury
-https://www.treasury.gov/resource-center/data-chart-center/interest-rates/Pages/TextView.aspx?data=yieldYear&year=2018
+https://www.treasury.gov/
 
 U.S. Bureau of Labor Statistics
 https://www.bls.gov/
